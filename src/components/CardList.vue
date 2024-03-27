@@ -2,15 +2,7 @@
   <div
     class="cards-container row q-gutter-xl justify-center rounded-borders q-mt-xs"
   >
-    <q-col
-      v-for="vid in videos"
-      :key="vid.id"
-      cols="12"
-      sm="12"
-      md="6"
-      lg="3"
-      class="col-container"
-    >
+    <q-col v-for="vid in videos" :key="vid.id" class="col-container">
       <CardItem v-bind="vid" />
     </q-col>
   </div>
@@ -31,7 +23,9 @@ const videos = ref(videosList);
 .cards-container {
   margin-top: -25px;
   .col-container {
-    width: 20%;
+    @media only screen and (min-width: 1204px) {
+      width: 20%;
+    }
 
     .q-card {
       border-radius: 5%;

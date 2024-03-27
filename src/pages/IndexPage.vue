@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fFf" class="bg-grey-1 q-mb-xl">
-    <app-header @toggle-sidebar="toggleLeftDrawer"></app-header>
-    <app-sidebar :open-sidebar="leftDrawerOpen" />
+    <app-header @toggle-drawer="toggleLeftDrawer"></app-header>
+    <app-drawer :open-drawer="leftDrawerOpen" />
     <q-page-container>
       <card-list />
     </q-page-container>
@@ -14,8 +14,8 @@ import { ref, defineAsyncComponent } from "vue";
 const AppHeader = defineAsyncComponent(() =>
   import("../components/AppHeader.vue")
 );
-const AppSidebar = defineAsyncComponent(() =>
-  import("../components/AppSidebar.vue")
+const AppDrawer = defineAsyncComponent(() =>
+  import("../components/AppDrawer.vue")
 );
 const CardList = defineAsyncComponent(() =>
   import("../components/CardList.vue")

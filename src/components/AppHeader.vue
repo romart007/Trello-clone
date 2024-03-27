@@ -5,7 +5,7 @@
         flat
         dense
         round
-        @click="handleSidebarToggle"
+        @click="handleDrawerToggle"
         aria-label="Menu"
         icon="menu"
       />
@@ -28,7 +28,12 @@
           class="bg-white col"
         >
           <template v-slot:append>
-            <q-btn unelevated dense icon="keyboard_alt" />
+            <q-btn
+              unelevated
+              dense
+              icon="keyboard_alt"
+              v-if="$q.screen.gt.sm"
+            />
             <q-btn
               unelevated
               rounded
@@ -38,7 +43,7 @@
             />
           </template>
         </q-input>
-        <div class="flex items-center">
+        <div class="flex items-center" v-if="$q.screen.gt.sm">
           <q-icon name="mic" size="28px" />
         </div>
       </div>
@@ -62,7 +67,7 @@
             rounded
             outline
             icon="account_circle"
-            label="My Account"
+            :label="$q.screen.gt.sm ? 'My Account' : ''"
           />
           <q-tooltip>Account</q-tooltip>
         </q-btn>
@@ -90,9 +95,9 @@ defineOptions({
 });
 const search = ref("");
 
-const handleSidebarToggle = () => emit("toggle-sidebar");
+const handleDrawerToggle = () => emit("toggle-drawer");
 
-const emit = defineEmits(["toggle-sidebar"]);
+const emit = defineEmits(["toggle-drawer"]);
 </script>
 
 <style lang="scss">
